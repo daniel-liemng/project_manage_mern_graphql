@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 require('colors');
 const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
+const cors = require('cors');
 
 const schema = require('./schema/schema');
 const { default: mongoose } = require('mongoose');
@@ -10,6 +10,8 @@ const { default: mongoose } = require('mongoose');
 dotenv.config();
 
 const app = express();
+
+app.use(cors());
 
 app.use(
   '/graphql',
