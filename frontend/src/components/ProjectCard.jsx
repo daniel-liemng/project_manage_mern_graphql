@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ project }) => {
   return (
@@ -7,7 +8,9 @@ const ProjectCard = ({ project }) => {
         <div className='card-body'>
           <div className='d-flex justify-content-between align-items-center'>
             <h5 className='card-title'>{project.name}</h5>
-            <button className='btn btn-light'>View</button>
+            <Link to={`/projects/${project.id}`} className='btn btn-light'>
+              View
+            </Link>
           </div>
 
           <p className='small'>
