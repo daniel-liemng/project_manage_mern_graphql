@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import { GET_PROJECT } from '../queries/projectQueries';
 import ClientInfo from '../components/ClientInfo';
+import DeleteProjectButton from '../components/DeleteProjectButton';
 
 const Project = () => {
   const { id } = useParams();
@@ -13,15 +14,13 @@ const Project = () => {
     },
   });
 
-  console.log(data);
-
   return (
     <>
       {!loading && !error && (
         <div className='mx-auto w-75 card p-5'>
           <Link
             to='/'
-            className='btn btn-light btn-sm w-25 d-inline mx-auto mb-3'
+            className='btn btn-light btn-sm w-25 d-inline ms-auto mb-3'
           >
             Back
           </Link>
@@ -32,6 +31,8 @@ const Project = () => {
           <p className='lead'>{data.project.status}</p>
 
           <ClientInfo client={data.project.client} />
+
+          <DeleteProjectButton projectId={id} />
         </div>
       )}
     </>
